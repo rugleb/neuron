@@ -1,6 +1,10 @@
 #include <iostream>
+#include "app/Model.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Model model;
+
+    model.run();
+
     return 0;
 }

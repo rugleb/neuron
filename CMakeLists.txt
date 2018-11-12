@@ -3,4 +3,4 @@ project(Neuron)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(Neuron main.cpp)
+add_executable(neuron main.cpp app/Model.cpp app/Model.h)
