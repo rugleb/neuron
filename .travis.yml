@@ -1,0 +1,14 @@
+language: cpp
+
+compiler:
+- gcc
+
+script:
+- ./build.sh
+
+notifications:
+  email:
+    recipients:
+    - rugleb@gmail.com
+    on_success: never
+    on_failure: always
