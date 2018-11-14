@@ -11,7 +11,7 @@ class Model {
 protected:
     std::vector<double> W;
     std::vector<Dataset> datasets;
-    void updateOutput(std::ofstream &file);
+    void updateOutputFile(std::ofstream &file);
 public:
     explicit Model(std::vector<Dataset> datasets);
     ~Model();
