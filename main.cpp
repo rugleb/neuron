@@ -40,15 +40,11 @@ std::vector<Dataset> concat(std::vector<Dataset> a, std::vector<Dataset> b) {
     return a;
 }
 
-std::ofstream makeOutputFile() {
-    std::ofstream file("output.txt");
-
+void prepareOutputFile(std::ofstream &file) {
     file << "set xrange[" << -3 * RADIUS << ":" << 3 * RADIUS << "]" << std::endl;
     file << "set yrange[" << -1 * RADIUS << ":" << 3 * RADIUS << "]" << std::endl;
     file << "set xlabel 'x1'" << std::endl;
     file << "set ylabel 'x2'" << std::endl;
-
-    return file;
 }
 
 int main() {
@@ -60,7 +56,8 @@ int main() {
 
     std::vector<Dataset> dataset = concat(setA, setB);
 
-    std::ofstream file = makeOutputFile();
+    std::ofstream file("output.txt");
+    prepareOutputFile(file);
 
     Model model(dataset);
     model.train(file);
