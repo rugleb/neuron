@@ -3,4 +3,4 @@ project(Neuron)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(neuron main.cpp app/Model.cpp app/Model.h)
+add_executable(neuron main.cpp app/Model.cpp app/Model.h app/Dataset.h)

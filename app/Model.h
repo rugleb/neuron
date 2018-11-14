@@ -1,15 +1,21 @@
 #ifndef NEURON_MODEL_H
 #define NEURON_MODEL_H
 
+#include <vector>
 #include <fstream>
+
+#include "Dataset.h"
+
 
 class Model {
 protected:
+    std::vector<double> W;
+    std::vector<Dataset> datasets;
+    void updateOutput(std::ofstream &file);
 public:
-    Model();
-    void run();
-    void dump(std::fstream &file);
-    void load(std::fstream &file);
+    explicit Model(std::vector<Dataset> datasets);
+    ~Model();
+    void train(std::ofstream &file);
 };
 
 #endif
