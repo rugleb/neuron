@@ -5,37 +5,8 @@
 
 #include "Model.h"
 #include "Dataset.h"
+#include "Support.h"
 
-#define DVector std::vector<double>
-
-
-double multiply(DVector A, DVector B) {
-    double y = 0.;
-    for (size_t i = 0; i < A.size(); i++) {
-        y += A[i] * B[i];
-    }
-    return y;
-}
-
-DVector multiply(DVector A, double b) {
-    DVector y;
-    for (size_t i = 0; i < A.size(); i++) {
-        y.push_back(A[i] * b);
-    }
-    return y;
-}
-
-DVector sum(DVector A, DVector B) {
-    DVector y;
-    for (size_t i = 0; i < A.size(); i++) {
-        y.push_back(A[i] + B[i]);
-    }
-    return y;
-}
-
-int heaviside(double x) {
-    return x < 0 ? 0 : 1;
-}
 
 Model::Model(std::vector<Dataset> sets) {
     datasets = std::move(sets);
