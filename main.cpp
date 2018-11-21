@@ -16,7 +16,7 @@ double rand(double min, double max)
     return min + f * (max - min);
 }
 
-std::vector<Dataset> generate(size_t R, size_t group, double x0, double y0, std::ofstream &file)
+std::vector<Dataset> generate(size_t R, size_t group, double_t x0, double_t y0, std::ofstream &file)
 {
     std::vector<Dataset> dataset;
 

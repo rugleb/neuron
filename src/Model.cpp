@@ -37,7 +37,7 @@ void Model::train(std::ofstream &file)
             size_t y = heaviside(W * X);
 
             if (y != set.y) {
-                W = W + (X * (set.y - y));
+                W = W + X * (set.y - y);
                 updateOutputFile(file);
                 errors++;
             }
@@ -52,5 +52,5 @@ void Model::updateOutputFile(std::ofstream &file)
     file << "plot (" << -W[0] / W[1] << ") + (" << -W[1] / W[2] << ") * x, \\" << std::endl;
     file << "'zeros.txt' using 1:2 w p lt rgb 'blue', \\" << std::endl;
     file << "'ones.txt' using 1:2 w p lt rgb 'red'" << std::endl;
-    file << "pause 1.5" << std::endl;
+    file << "pause 0.25" << std::endl;
 }
