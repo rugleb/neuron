@@ -1,7 +1,7 @@
 #include <cmath>
 #include "Support.h"
 
-size_t heaviside(double x)
+int heaviside(double x)
 {
     return x < 0 ? 0 : 1;
 }

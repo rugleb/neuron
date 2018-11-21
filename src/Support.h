@@ -3,11 +3,10 @@
 
 #include <vector>
 
-#define SQUARE(x)   (x * x)
 #define D_VECTOR    std::vector<double>
 
 
-size_t heaviside(double x);
+int heaviside(double x);
 
 D_VECTOR operator* (const D_VECTOR &, double);
 double   operator* (const D_VECTOR &, const D_VECTOR &);
