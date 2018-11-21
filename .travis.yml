@@ -5,8 +5,7 @@ compiler:
 
 script:
 - ./compile.sh
-- cd app
-- ./neuron
+- ./app/neuron
 
 notifications:
   email:
