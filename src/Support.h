@@ -6,7 +6,7 @@
 #define D_VECTOR    std::vector<double>
 
 
-int heaviside(double x);
+std::size_t heaviside(double x);
 
 D_VECTOR operator* (const D_VECTOR &, double);
 double   operator* (const D_VECTOR &, const D_VECTOR &);

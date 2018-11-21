@@ -7,7 +7,7 @@
 
 struct Dataset {
     std::vector<double> X;
-    size_t y;
+    std::size_t y;
 };
 
 
@@ -17,7 +17,7 @@ protected:
     std::vector<Dataset> datasets;
     void updateOutputFile(std::ofstream &file);
 public:
-    explicit Model(std::vector<Dataset> datasets);
+    Model(std::vector<Dataset> datasets);
     ~Model();
     void train(std::ofstream &file);
 };

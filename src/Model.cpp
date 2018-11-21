@@ -33,7 +33,7 @@ void Model::train(std::ofstream &file)
             D_VECTOR X = set.X;
             X.insert(X.begin(), 1.);
 
-            size_t y = heaviside(W * X);
+            std::size_t y = heaviside(W * X);
 
             if (y != set.y) {
                 W = W + X * (set.y - y);

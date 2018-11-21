@@ -1,14 +1,14 @@
 #include <cmath>
 #include "Support.h"
 
-int heaviside(double x)
+std::size_t heaviside(double x)
 {
     return x < 0 ? 0 : 1;
 }
 
 D_VECTOR operator*(const D_VECTOR &a, double b)
 {
-    size_t size = a.size();
+    std::size_t size = a.size();
     D_VECTOR y(size);
 
     for (size_t i = 0; i < size; i++) {
@@ -20,7 +20,7 @@ D_VECTOR operator*(const D_VECTOR &a, double b)
 
 double operator*(const D_VECTOR &a, const D_VECTOR &b)
 {
-    size_t size = a.size();
+    std::size_t size = a.size();
     double y = 0.;
 
     for (size_t i = 0; i < size; i++) {
@@ -32,7 +32,7 @@ double operator*(const D_VECTOR &a, const D_VECTOR &b)
 
 D_VECTOR operator+(const D_VECTOR &a, const D_VECTOR &b)
 {
-    size_t size = a.size();
+    std::size_t size = a.size();
     D_VECTOR y(size);
 
     for (size_t i = 0; i < size; i++) {
@@ -44,7 +44,7 @@ D_VECTOR operator+(const D_VECTOR &a, const D_VECTOR &b)
 
 D_VECTOR operator-(const D_VECTOR &a, const D_VECTOR &b)
 {
-    size_t size = a.size();
+    std::size_t size = a.size();
     D_VECTOR y(size);
 
     for (size_t i = 0; i < size; i++) {
