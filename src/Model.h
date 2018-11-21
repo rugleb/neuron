@@ -4,7 +4,11 @@
 #include <vector>
 #include <fstream>
 
-#include "Dataset.h"
+
+struct Dataset {
+    std::vector<double> X;
+    size_t y;
+};
 
 
 class Model {

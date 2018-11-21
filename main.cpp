@@ -5,7 +5,6 @@
 #include <algorithm>
 
 #include "src/Model.h"
-#include "src/Dataset.h"
 
 #define PI          3.14
 #define RADIUS      10
