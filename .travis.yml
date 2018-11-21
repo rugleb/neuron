@@ -5,10 +5,12 @@ compiler:
 
 script:
 - ./compile.sh
+- cd app
+- ./neuron
 
 notifications:
   email:
     recipients:
-    - rugleb@gmail.com
+      - rugleb@gmail.com
     on_success: never
     on_failure: always
