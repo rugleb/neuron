@@ -11,7 +11,7 @@ D_VECTOR operator*(const D_VECTOR &a, double b)
     std::size_t size = a.size();
     D_VECTOR y(size);
 
-    for (size_t i = 0; i < size; i++) {
+    for (std::size_t size i = 0; i < size; i++) {
         y[i] = a[i] * b;
     }
 
@@ -23,7 +23,7 @@ double operator*(const D_VECTOR &a, const D_VECTOR &b)
     std::size_t size = a.size();
     double y = 0.;
 
-    for (size_t i = 0; i < size; i++) {
+    for (std::size_t size i = 0; i < size; i++) {
         y = a[i] * b[i];
     }
 
@@ -35,7 +35,7 @@ D_VECTOR operator+(const D_VECTOR &a, const D_VECTOR &b)
     std::size_t size = a.size();
     D_VECTOR y(size);
 
-    for (size_t i = 0; i < size; i++) {
+    for (std::size_t size i = 0; i < size; i++) {
         y[i] = a[i] + b[i];
     }
 
@@ -47,7 +47,7 @@ D_VECTOR operator-(const D_VECTOR &a, const D_VECTOR &b)
     std::size_t size = a.size();
     D_VECTOR y(size);
 
-    for (size_t i = 0; i < size; i++) {
+    for (std::size_t size i = 0; i < size; i++) {
         y[i] = a[i] - b[i];
     }
 
