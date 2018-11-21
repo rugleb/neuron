@@ -26,7 +26,7 @@ void Model::train(std::ofstream &file)
     W = D_VECTOR(datasets.front().X.size() + 1, .1);
     updateOutputFile(file);
 
-    for (epoch = 0, errors = 0; epoch < 1e+2; epoch++) {
+    for (epoch = 0, errors = 0; epoch < 10; epoch++) {
         std::random_shuffle(datasets.begin(), datasets.end());
 
         for (auto set : datasets) {
