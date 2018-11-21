@@ -5,7 +5,7 @@
 
 struct Dataset {
     std::vector<double> X;
-    int y;
+    size_t y;
 };
 
 #endif
