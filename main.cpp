@@ -19,7 +19,7 @@ std::vector<Dataset> generate(size_t R, size_t group, double_t x0, double_t y0, 
 {
     std::vector<Dataset> dataset;
 
-    for (std::size_t size i = 0; i < 1e+3; i++) {
+    for (std::size_t i = 0; i < 1e+3; i++) {
         double r = R * rand(0., 1.);
         double angle = rand(0., 1.) * 2. * PI;
 
