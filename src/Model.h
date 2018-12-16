@@ -1,25 +1,33 @@
 #ifndef NEURON_MODEL_H
 #define NEURON_MODEL_H
 
-#include <vector>
+#include <cmath>
+#include <random>
 #include <fstream>
+#include <iostream>
+#include <algorithm>
 
+#include "vector.h"
 
-struct Dataset {
-    std::vector<double> X;
-    std::size_t y;
+struct Sample {
+    vector x;
+    int y;
 };
 
+typedef std::vector<Sample> Dataset;
+
+template <typename T>
+void shuffle(std::vector<T>);
+
+int heaviside(double x);
 
 class Model {
 protected:
-    std::vector<double> W;
-    std::vector<Dataset> datasets;
+    vector w;
     void updateOutputFile(std::ofstream &file);
 public:
-    Model(std::vector<Dataset> datasets);
-    ~Model();
-    void train(std::ofstream &file);
+    explicit Model();
+    void train(Dataset dataset, std::size_t epochs, std::ofstream &file);
 };
 
 #endif

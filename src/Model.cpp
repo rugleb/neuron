@@ -1,55 +1,61 @@
-#include <cmath>
-#include <fstream>
-#include <iostream>
-#include <algorithm>
-
 #include "Model.h"
-#include "Support.h"
 
-
-Model::Model(std::vector<Dataset> sets)
+int heaviside(double x)
 {
-    datasets = std::move(sets);
+    return x < 0. ? 0 : 1;
 }
 
-Model::~Model()
+template <typename T>
+void shuffle(std::vector<T> vector)
 {
-    W.clear();
-    datasets.clear();
+    std::random_device device;
+    std::mt19937 generator(device());
+    std::shuffle(vector.begin(), vector.end(), generator);
 }
 
-void Model::train(std::ofstream &file)
+Model::Model()
 {
-    unsigned int epoch;
-    unsigned int errors;
+    w = {};
+}
 
-    W = D_VECTOR(datasets.front().X.size() + 1, .1);
+void Model::train(Dataset dataset, std::size_t epochs, std::ofstream &file)
+{
+    w = vector(dataset.front().x.size() + 1, .1);
     updateOutputFile(file);
 
-    for (epoch = 0, errors = 0; epoch < 10; epoch++) {
-        std::random_shuffle(datasets.begin(), datasets.end());
+    auto error = 0;
+    printf("Training started\n");
 
-        for (auto set : datasets) {
-            D_VECTOR X = set.X;
-            X.insert(X.begin(), 1.);
+    for (auto epoch = 0; epoch < epochs; epoch++) {
 
-            std::size_t y = heaviside(W * X);
+        shuffle(dataset);
+        error = 0;
+
+        for (const Sample &set : dataset) {
+            vector x = set.x;
+            x.insert(x.begin(), 1.);
+
+            int y = heaviside(w * x);
 
             if (y != set.y) {
-                W = W + X * (set.y - y);
+                w = w + x * (set.y - y);
                 updateOutputFile(file);
-                errors++;
+                error++;
             }
         }
 
-        if (errors == 0) break;
+        printf("---- Epoch: %2d, error: %2d (%ld)\n", epoch + 1, error, dataset.size());
+
+        if (error == 0) break;
     }
+
+    printf("Training finished\n");
 }
 
 void Model::updateOutputFile(std::ofstream &file)
 {
-    file << "plot (" << -W[0] / W[1] << ") + (" << -W[1] / W[2] << ") * x, \\" << std::endl;
+    file << "plot (" << -w[0] / w[1] << ") + (" << -w[1] / w[2] << ") * x, \\" << std::endl;
     file << "'zeros.txt' using 1:2 w p lt rgb 'blue', \\" << std::endl;
     file << "'ones.txt' using 1:2 w p lt rgb 'red'" << std::endl;
-    file << "pause 0.25" << std::endl;
+    file << "pause 0.5" << std::endl;
 }
