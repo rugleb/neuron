@@ -49,6 +49,7 @@ void Model::train(Dataset dataset, std::size_t epochs, std::ofstream &file)
         if (error == 0) break;
     }
 
+    updateOutputFile(file);
     printf("Training finished\n");
 }
 

@@ -16,7 +16,7 @@ Dataset generate(int group, double x0, double y0, std::ofstream &file)
 {
     Dataset dataset;
 
-    for (auto i = 0; i < 100; i++) {
+    for (auto i = 0; i < 1e+3; i++) {
         double r = R * rand(0., 1.);
         double angle = rand(0., 1.) * 2. * PI;
 
@@ -51,8 +51,8 @@ int main()
     std::ofstream ones("ones.txt");
     std::ofstream zeros("zeros.txt");
 
-    Dataset set1 = generate(1, R * 1.1, R, ones);
-    Dataset set0 = generate(0, -R * 1.1, R, zeros);
+    Dataset set1 = generate(1, R * 1.5, R, ones);
+    Dataset set0 = generate(0, -R * 1.5, R, zeros);
 
     Dataset dataset = concat(set0, set1);
 
